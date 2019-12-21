@@ -1,6 +1,6 @@
 package selectionSort;
 /**
- * 
+ * Note: https://www.youtube.com/watch?v=cqh8nQwuKNE
  * O(n^2) not stable, really bad, no matter if its almost sorted or not
  * O(1) space
  * O(n) swaps, but slow in general
