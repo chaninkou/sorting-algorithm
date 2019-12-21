@@ -4,6 +4,7 @@ package insertionSort;
  * 
  * Insertion sort is O(n^2) worst case time
  * Best case is O(n) when problem is nearly sorted or the problem size is small
+ * If its reversed sorted already, its really bad
  *
  * O(1) space since shift items into place
  *
