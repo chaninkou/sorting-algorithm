@@ -2,6 +2,8 @@ package quickSort;
 
 import java.util.Random;
 /**
+ * Note: https://www.youtube.com/watch?v=Fiot5yuwPAg
+ * 
  * Average O(nlogn) when using a good pivot like randomly choosing pivot
  * Worst case is O(n^2) when choosing a bad pivot
  * O(logn) for space
