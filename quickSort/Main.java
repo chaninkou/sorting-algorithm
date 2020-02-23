@@ -8,7 +8,7 @@ public class Main {
 		
 		System.out.println(Arrays.toString(A));
 		
-		QuickSort sorting = new QuickSort();
+		PracticeQuickSort sorting = new PracticeQuickSort();
 		
 		sorting.quickSort(A);
 		
