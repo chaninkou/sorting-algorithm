@@ -1,65 +1,72 @@
 package mergeSortArray;
 
 public class MergeSortArrayTest {
-	public int[] mergeSort(int[] array){
-		// If there is only one element in the array, return it
-		if(array.length <= 1){
-			return array;
+	// O(nlogn) time complexity no matter what
+	public int[] mergeSort(int[] nums){
+		if(nums.length == 1){
+			return nums;
 		}
 		
-		// Get the midpoint of current array
-		int midPoint = array.length / 2;
+		// Keep cutting the array into 2
+		int mid = nums.length / 2;
 		
-		// The left array 
-		int[] left = new int[midPoint];
+		// Mergesort uses extra O(n) memeory because of here, copying array and store it
+		int[] left = new int[mid];
 		
-		// The right array
-		int[] right = new int[array.length - midPoint];
+		int[] right = new int[nums.length - mid];
 		
-		// Put the left side of the array to the new left array
-		for(int i = 0; i < midPoint; i++){
-			left[i] = array[i];
+		for(int i = 0; i < left.length; i++){
+			left[i] = nums[i];
 		}
 		
-		// Put the right side of the array to the new right array
 		for(int j = 0; j < right.length; j++){
-			right[j] = array[midPoint + j];
+			right[j] = nums[mid + j];
 		}
 		
-		// Creating a result array
-		int[] result = new int[array.length];
+		int[] result = new int[nums.length];
 		
 		left = mergeSort(left);
 		
 		right = mergeSort(right);
 		
 		result = mergeTwoArray(left, right);
-	
+		
 		return result;
 	}
-
-	// Merge the left and right array into a one sorted array
-	private int[] mergeTwoArray(int[] left, int[] right) {
-		// Creating the result array
+	
+	private int[] mergeTwoArray(int[] left, int[] right){
 		int[] result = new int[left.length + right.length];
 		
-		int leftPointer, rightPointer, resultPointer;
-		
-		leftPointer = rightPointer = resultPointer = 0;
+		int leftPointer = 0, rightPointer = 0, resultPointer = 0;
 		
 		while(leftPointer < left.length || rightPointer < right.length){
+			// Whichever smaller one will go to result array first
 			if(leftPointer < left.length && rightPointer < right.length){
-				// Check which current array is smaller
 				if(left[leftPointer] < right[rightPointer]){
-					// Make sure to update the pointer
-					result[resultPointer++] = left[leftPointer++];
-				}else if(right[rightPointer] <= left[leftPointer]){
-					result[resultPointer++] = right[rightPointer++];
+					result[resultPointer] = left[leftPointer];
+					
+					resultPointer++;
+					leftPointer++;
+					
+				} else {
+					result[resultPointer] = right[rightPointer];
+					
+					resultPointer++;
+					rightPointer++;
+					
 				}
-			} else if (leftPointer < left.length){
-				result[resultPointer++] = left[leftPointer++];
-			} else if (rightPointer < right.length){
-				result[resultPointer++] = right[rightPointer++];
+				
+			} else if (leftPointer < left.length){ // Whichever array still have elements will go into the result array
+				result[resultPointer] = left[leftPointer];
+				
+				resultPointer++;
+				leftPointer++;
+				
+			} else if (rightPointer < right.length){ // Whichever array still have elements will go into the result array
+				result[resultPointer] = right[rightPointer];
+				
+				resultPointer++;
+				rightPointer++;
 			}
 		}
 		

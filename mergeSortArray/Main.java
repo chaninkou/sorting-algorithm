@@ -8,7 +8,7 @@ public class Main {
 		
 		System.out.println("Input: " + Arrays.toString(array));
 		
-		MergeSortArray solution = new MergeSortArray();
+		MergeSortArrayTest solution = new MergeSortArrayTest();
 		
 		int[] sortedArray = solution.mergeSort(array);
 		
