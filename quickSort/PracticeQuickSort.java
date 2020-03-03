@@ -11,7 +11,7 @@ public class PracticeQuickSort {
 	}
 	
 	private void quickSort(int[] nums, int start, int end){
-		
+		// If end is negative, nothing will happen
 		if(start < end){
 			int pivot = partition(nums, start, end);
 			
@@ -21,7 +21,6 @@ public class PracticeQuickSort {
 		}
 		
 	}
-	
 
 	private int partition(int[] nums, int start, int end){
 		// Our random number pivot will get swap to the first element everytime
@@ -48,7 +47,7 @@ public class PracticeQuickSort {
 		return placeToSwap - 1;
 	}
 
-	
+	// Helper method that swap two element
 	private void swap(int[] nums, int left, int right){
 		int temp = nums[left];
 		
@@ -57,6 +56,7 @@ public class PracticeQuickSort {
 		nums[right] = temp;
 	}
 	
+	// Helper method that get random number within a certain range
 	private int getRandomNumber(int min, int max){
 		Random random = new Random();
 		
