@@ -19,13 +19,14 @@ public class InsertionSort {
 		for(i = 1; i < list.length; i++){
 			
 			// Keep track of the current element we are using to compare
-			key = list[i];
+			// We could store it, but it would be kind of confusing
+			//key = list[i];
 			
 			// j is always the previous index of i
 			j = i - 1;
 			
 			// Making sure j is not negative index, and checking if key is list[j] is bigger than key
-			while(j >= 0 && key < list[j]){
+			while(j >= 0 && list[j + 1] < list[j]){
 				temp = list[j];
 				
 				// Since we know we just swapping the elements next to each other
