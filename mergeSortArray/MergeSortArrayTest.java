@@ -3,6 +3,7 @@ package mergeSortArray;
 public class MergeSortArrayTest {
 	// O(nlogn) time complexity no matter what
 	public int[] mergeSort(int[] nums){
+		// Make sure to just return the single element
 		if(nums.length == 1){
 			return nums;
 		}
@@ -10,7 +11,7 @@ public class MergeSortArrayTest {
 		// Keep cutting the array into 2
 		int mid = nums.length / 2;
 		
-		// Mergesort uses extra O(n) memeory because of here, copying array and store it
+		// Mergesort uses extra O(n) memory because of here, copying array and store it
 		int[] left = new int[mid];
 		
 		int[] right = new int[nums.length - mid];

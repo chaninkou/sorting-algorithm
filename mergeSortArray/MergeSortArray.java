@@ -35,7 +35,11 @@ public class MergeSortArray {
 		for(int j = 0; j < right.length; j++){
 			right[j] = array[midpoint + j];
 		}
-		
+//		 Could do this too for the above
+//		for(int j = midpoint; j < array.length; j++){
+//			right[j] = array[j];
+//		}
+
 		// Sorted result array
 		int[] result = new int[array.length];
 		
