@@ -1,19 +1,14 @@
 package mergeSortArray;
 
 public class MergeSortArrayTest {
-	// O(nlogn) time complexity no matter what
 	public int[] mergeSort(int[] nums){
-		// Make sure to just return the single element
-		if(nums.length == 1){
+		if(nums.length <= 1){
 			return nums;
 		}
 		
-		// Keep cutting the array into 2
-		int mid = nums.length / 2;
+		int mid = nums.length/2;
 		
-		// Mergesort uses extra O(n) memory because of here, copying array and store it
 		int[] left = new int[mid];
-		
 		int[] right = new int[nums.length - mid];
 		
 		for(int i = 0; i < left.length; i++){
@@ -24,53 +19,52 @@ public class MergeSortArrayTest {
 			right[j] = nums[mid + j];
 		}
 		
-		int[] result = new int[nums.length];
+		int[] combination = new int[nums.length];
 		
 		left = mergeSort(left);
 		
 		right = mergeSort(right);
 		
-		result = mergeTwoArray(left, right);
+		combination = mergeTwoArray(left, right);
 		
-		return result;
+		return combination;
 	}
 	
 	private int[] mergeTwoArray(int[] left, int[] right){
-		int[] result = new int[left.length + right.length];
+		int[] combination = new int[left.length + right.length];
 		
-		int leftPointer = 0, rightPointer = 0, resultPointer = 0;
+		int leftPointer = 0;
+		
+		int rightPointer = 0;
+		
+		int finalPointer = 0;
 		
 		while(leftPointer < left.length || rightPointer < right.length){
-			// Whichever smaller one will go to result array first
 			if(leftPointer < left.length && rightPointer < right.length){
 				if(left[leftPointer] < right[rightPointer]){
-					result[resultPointer] = left[leftPointer];
-					
-					resultPointer++;
+					combination[finalPointer] = left[leftPointer];
 					leftPointer++;
-					
+					finalPointer++;
 				} else {
-					result[resultPointer] = right[rightPointer];
-					
-					resultPointer++;
+					combination[finalPointer] = right[rightPointer];
 					rightPointer++;
-					
+					finalPointer++;
 				}
-				
-			} else if (leftPointer < left.length){ // Whichever array still have elements will go into the result array
-				result[resultPointer] = left[leftPointer];
-				
-				resultPointer++;
-				leftPointer++;
-				
-			} else if (rightPointer < right.length){ // Whichever array still have elements will go into the result array
-				result[resultPointer] = right[rightPointer];
-				
-				resultPointer++;
-				rightPointer++;
+			} else if (leftPointer < left.length){
+				while(leftPointer < left.length){
+					combination[finalPointer] = left[leftPointer];
+					leftPointer++;
+					finalPointer++;
+				}
+			} else if (rightPointer < right.length){
+				while(rightPointer < right.length){
+					combination[finalPointer] = right[rightPointer];
+					rightPointer++;
+					finalPointer++;
+				}
 			}
 		}
-		
-		return result;
+
+		return combination;
 	}
 }
